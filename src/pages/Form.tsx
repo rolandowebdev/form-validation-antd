@@ -21,6 +21,7 @@ import {
 	Select,
 	InputPassword,
 	Checkbox,
+	DynamicInput,
 } from '../components'
 import { countries } from '../data'
 
@@ -30,7 +31,7 @@ export const FormUser = () => {
 		token: { colorBgContainer },
 	} = theme.useToken()
 
-	const methods = useForm({
+	const methods = useForm<User>({
 		defaultValues: {
 			fullName: '',
 			email: '',
@@ -38,6 +39,7 @@ export const FormUser = () => {
 			mobile: '',
 			password: '',
 			confirmPassword: '',
+			items: [{ id: '', name: '' }],
 			privacy: false,
 		},
 		resolver: yupResolver(schema),
@@ -56,13 +58,14 @@ export const FormUser = () => {
 		`Password : ${data?.password?.toString() ?? ''}` || 'Password :',
 		`ConfirmPassword : ${data?.confirmPassword?.toString() ?? ''}` ||
 			'Confirm Password :',
+		`Items : ${data?.items.map((item) => item.name) ?? ''}` || 'Items :',
 		`Privacy : ${data?.privacy?.toString() ?? ''}` || 'Privacy :',
 	]
 
 	return (
 		<Layout
 			style={{
-				height: '100vh',
+				minHeight: '100vh',
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
@@ -112,12 +115,14 @@ export const FormUser = () => {
 									placeholder='Confirm Password'
 								/>
 
+								<DynamicInput name='items' />
+
 								<Checkbox
 									name='privacy'
 									text='I agree to Form Validation terms and privacy policy'
 								/>
 
-								<Form.Item style={{ textAlign: 'center', marginTop: '24px' }}>
+								<Form.Item style={{ textAlign: 'center' }}>
 									<Button
 										style={{
 											width: '100%',

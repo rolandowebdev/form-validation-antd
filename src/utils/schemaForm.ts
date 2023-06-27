@@ -27,5 +27,5 @@ export const schema = yup.object().shape({
 		.string()
 		.required('Confirm Password is required!')
 		.oneOf([yup.ref('password'), ''], 'Confirm Password does not match!'),
-	privacy: yup.bool().oneOf([true], 'Accept Terms is required'),
+	privacy: yup.bool().oneOf([true], 'Accept Terms is required!'),
 })

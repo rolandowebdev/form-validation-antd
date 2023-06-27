@@ -11,6 +11,7 @@ export const Checkbox = ({ name, text }: CheckboxProps) => {
 		control,
 		formState: { errors },
 	} = useFormContext()
+
 	return (
 		<Controller
 			name={name}
@@ -19,9 +20,7 @@ export const Checkbox = ({ name, text }: CheckboxProps) => {
 				<Form.Item
 					help={errors[name] ? errors[name]?.message?.toString() : null}
 					validateStatus={errors[name] ? 'error' : ''}>
-					<CheckboxAntd {...field} checked={false}>
-						{text}
-					</CheckboxAntd>
+					<CheckboxAntd {...field}>{text}</CheckboxAntd>
 				</Form.Item>
 			)}
 		/>
