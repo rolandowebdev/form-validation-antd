@@ -1,4 +1,9 @@
-import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons'
+import {
+	LockOutlined,
+	MailOutlined,
+	UserOutlined,
+	AlertFilled,
+} from '@ant-design/icons'
 import { yupResolver } from '@hookform/resolvers/yup'
 import {
 	Button,
@@ -35,6 +40,7 @@ export const FormUser = () => {
 		defaultValues: {
 			fullName: '',
 			email: '',
+			number: '',
 			country: '',
 			mobile: '',
 			password: '',
@@ -53,6 +59,7 @@ export const FormUser = () => {
 	const dataSource = [
 		`Full Name : ${data?.fullName?.toString() ?? ''}` || 'Full Name :',
 		`Email : ${data?.email?.toString() ?? ''}` || 'Email :',
+		`Number : ${data?.number?.toString() ?? ''}` || 'Number :',
 		`Phone : ${data?.mobile?.toString() ?? ''}` || 'Phone :',
 		`Country : ${data?.country?.toString() ?? ''}` || 'Country :',
 		`Password : ${data?.password?.toString() ?? ''}` || 'Password :',
@@ -89,6 +96,13 @@ export const FormUser = () => {
 									name='email'
 									icon={<MailOutlined />}
 									placeholder='Email'
+								/>
+
+								<InputText
+									isCurrencyType
+									name='number'
+									icon={<AlertFilled />}
+									placeholder='Number'
 								/>
 
 								<InputNumber

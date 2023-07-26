@@ -5,6 +5,7 @@ export type Items = {
 export type User = {
 	fullName: string
 	email: string
+	number: string
 	country: string
 	mobile: string
 	password: string
