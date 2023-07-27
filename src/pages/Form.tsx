@@ -29,6 +29,7 @@ import {
 	DynamicInput,
 } from '../components'
 import { countries } from '../data'
+import { InputCurrency } from '../components/Input/InputCurrency'
 
 export const FormUser = () => {
 	const [data, setData] = useState<User | null>(null)
@@ -41,6 +42,7 @@ export const FormUser = () => {
 			fullName: '',
 			email: '',
 			number: '',
+			currency: 0,
 			country: '',
 			mobile: '',
 			password: '',
@@ -60,6 +62,7 @@ export const FormUser = () => {
 		`Full Name : ${data?.fullName?.toString() ?? ''}` || 'Full Name :',
 		`Email : ${data?.email?.toString() ?? ''}` || 'Email :',
 		`Number : ${data?.number?.toString() ?? ''}` || 'Number :',
+		`Currency : ${data?.currency?.toString() ?? ''}` || 'Currency :',
 		`Phone : ${data?.mobile?.toString() ?? ''}` || 'Phone :',
 		`Country : ${data?.country?.toString() ?? ''}` || 'Country :',
 		`Password : ${data?.password?.toString() ?? ''}` || 'Password :',
@@ -103,6 +106,12 @@ export const FormUser = () => {
 									name='number'
 									icon={<AlertFilled />}
 									placeholder='Number'
+								/>
+
+								<InputCurrency
+									name='currency'
+									addonBefore='IDR'
+									placeholder='Currency'
 								/>
 
 								<InputNumber
