@@ -8,16 +8,6 @@ type InputCurrencyProps = {
 	size?: 'large' | 'middle' | 'small'
 }
 
-declare global {
-	interface BigInt {
-		toJSON: () => string
-	}
-}
-
-BigInt.prototype.toJSON = function () {
-	return this.toString()
-}
-
 export const InputCurrency = ({
 	name,
 	placeholder,
